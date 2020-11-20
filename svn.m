@@ -44,7 +44,7 @@ end
 
 %% Execute svn command.
 svnver = '1.8.5';
-cmd = [get_svnexe(svnver), ' ', sprintf('%s ', varargin{:})];
+cmd = ['"', get_svnexe(svnver), '"', ' ', sprintf('%s ', varargin{:})];
 if ismember(varargin{1}, {'st', 'status', 'add', 'import'})
     cmd = [cmd, '--no-ignore'];
 end
