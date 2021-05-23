@@ -134,6 +134,14 @@ end
 if ~isempty(revision_filename{1}) && ~isempty(revision_filename{2})
     if ismember(ext, {'.mlx', '.slx'})
         visdiff(revision_filename{1}, revision_filename{2});
+    elseif ismember(ext, {'.pdf'})
+        txtfilenames = revision_filename;
+        for n = 1:numel(txtfilenames)
+            txtfilenames{n}(end-2 : end) = 'txt';
+        end
+        pdf2txt(revision_filename, txtfilenames);
+        halt = 0;
+        winmerge(txtfilenames{1}, txtfilenames{2}, 'None', halt);        
     else
         halt = 0;
         winmerge(revision_filename{1}, revision_filename{2}, 'None', halt);
