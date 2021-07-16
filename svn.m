@@ -109,6 +109,11 @@ for n = 1:2
         else
             revision_filename{n} = filename;
         end
+        if ismember(ext, '.pdf')
+            revision_filename{n} = [tempdir, 'svngdiff-', name, '-local', ext];
+            fprintf('copyfile %s %s\n', filename, revision_filename{n})
+            copyfile(filename, revision_filename{n});
+        end
     elseif strcmp(revision{n}, 'head')
         revision_filename{n} = [tempdir, 'svngdiff-', name, '-head', ext];
         str = sprintf('svn(''cat "%s" -r HEAD > "%s"'')', ...
