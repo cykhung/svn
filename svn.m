@@ -137,7 +137,7 @@ for n = 1:2
     end
 end
 if ~isempty(revision_filename{1}) && ~isempty(revision_filename{2})
-    if ismember(ext, {'.mlx', '.slx'})
+    if ismember(ext, {'.mlx', '.slx', '.mlapp'})
         visdiff(revision_filename{1}, revision_filename{2});
     elseif ismember(ext, {'.pdf'})
         txtfilenames = revision_filename;
