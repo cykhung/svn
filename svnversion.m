@@ -12,7 +12,7 @@ end
 
 
 %% Execute svnversion command.
-[status, result] = dos([svnexe, ' ', sprintf('%s ', varargin{:})]);
+[status, result] = dos([sprintf('"%s" ', svnexe), sprintf('%s ', varargin{:})]);
 if nargout == 0
     fprintf('%s\n', result);
 end
