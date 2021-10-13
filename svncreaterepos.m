@@ -16,6 +16,8 @@ end
 svnadmin('create', repos);
 url = ['file:///', strrep(repos, '\', '/'), '/trunk'];
 svn('mkdir', url, '-m "Start trunk."');
+url = ['file:///', strrep(repos, '\', '/'), '/branches'];
+svn('mkdir', url, '-m "Start branches."');
 
 
 %% Checkout a local copy.
