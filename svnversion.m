@@ -5,7 +5,8 @@ function varargout = svnversion(varargin)
 svnver   = '1.8.5';
 switch svnver
 case '1.8.5'
-    svnexe = fullfile(fileparts(mfilename('fullpath')), 'svnversion.exe');
+    svnexe = fullfile(fileparts(mfilename('fullpath')), 'private', ...
+        'svn-1.8.5', 'svnversion.exe');
 otherwise
     error('Invalid svnver.');
 end
