@@ -191,6 +191,13 @@ svn cat file:///V:/khung/svnrepos-skunk/trunk/startup.m@807 > startup.m
 svn add startup.m
 svn commit -m "Resurrect startup.m from revision 807 but no history."
 
+%% Resurrect deleted folder but do not want to keep history.
+%
+% * 'test' is a folder with 2 files and the entire folder (with its 2 files) is
+%   deleted in revision 4341.
+%
+svn export file:///V:/khung/svnrepos-skunk/trunk/test@4340 test
+
 %% Resurrect deleted file and keep history. Directly done to the repository.
 svn rm file:///V:/khung/svnrepos-skunk/trunk/startup.m -m "Delete file."
 svn copy file:///V:/khung/svnrepos-skunk/trunk/startup.m@807    ...
