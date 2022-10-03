@@ -161,11 +161,11 @@ svnsync('sync https://svn.sliksvn.com/ashlandroboticsclub')
 %
 % * Configure the program used for comparing different revisions of files
 %   (1) Select "External"
-%   (2) V:\khung\WinMerge\WinMergeU.exe -e -ub -dl %bname -dr %yname %base %mine
+%   (2) V:\khung\winmerge\trunk\private\winmerge-2.16.0.0\WinMergeU.exe -e -ub -dl %bname -dr %yname %base %mine
 %
 % * Configure the program used for comparing different revisions of properties
 %   (1) Select "External"
-%   (2) V:\khung\WinMerge\WinMergeU.exe -e -ub -dl %bname -dr %yname %base %mine
+%   (2) V:\khung\winmerge\trunk\private\winmerge-2.16.0.0\WinMergeU.exe -e -ub -dl %bname -dr %yname %base %mine
 
 
 % ------------------------------------------------------------------------------
