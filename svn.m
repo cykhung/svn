@@ -48,7 +48,13 @@ cmd = ['"', get_svnexe(svnver), '"', ' ', sprintf('%s ', varargin{:})];
 if ismember(varargin{1}, {'st', 'status', 'add', 'import'})
     cmd = [cmd, '--no-ignore'];
 end
-% fprintf('%s\n\n', cmd)
+if ismember(varargin{1}, {'ci', 'commit'})
+    if all(ismember(varargin, {'-m', '--message', '-F', '--file'}) == 0)
+        cmd = [cmd, '-m ""'];
+    end
+end
+
+
 [status, result] = dos(cmd);
 if nargout == 0
     fprintf('%s\n', result);
