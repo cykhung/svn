@@ -1,4 +1,4 @@
-function varargout = svn(varargin)
+function result = svn(varargin)
 
 %
 %     FUNCTION: svn - Run Svn.
@@ -36,8 +36,8 @@ end
 
 %% Special case: svn addci
 if strcmp(varargin{1}, 'addci')
-    svn('add --force', varargin{2:end});
-    svn('ci', varargin{2:end}, '-m "Initial commit."');
+    svn('add --force', varargin{2:end})
+    svn('ci', varargin{2:end})
     return;
 end
 
@@ -53,15 +53,12 @@ if ismember(varargin{1}, {'ci', 'commit'})
         cmd = [cmd, '-m ""'];
     end
 end
-
-
+% fprintf('\n%s\n', repmat('-', 1, 40));
+% fprintf('%s\n', cmd);
+% fprintf('%s\n\n', repmat('-', 1, 40));
 [status, result] = dos(cmd);
-if nargout == 0
-    fprintf('%s\n', result);
-else
-    varargout = {result};
-end
 if status ~= 0
+    disp(result)
     error('status ~= 0');
 end
 

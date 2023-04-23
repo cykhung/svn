@@ -15,14 +15,14 @@ end
 %% Create new svn repository.
 svnadmin('create', repos);
 url = ['file:///', strrep(repos, '\', '/'), '/trunk'];
-svn('mkdir', url, '-m "Start trunk."');
+svn('mkdir', url, '-m "Start trunk."')
 url = ['file:///', strrep(repos, '\', '/'), '/branches'];
-svn('mkdir', url, '-m "Start branches."');
+svn('mkdir', url, '-m "Start branches."')
 
 
 %% Checkout a local copy.
 url   = ['file:///', strrep(repos, '\', '/')];
-svn('co', url, local);
+svn('co', url, local)
 
 
 end
