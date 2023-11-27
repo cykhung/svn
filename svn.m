@@ -6,6 +6,7 @@ function result = svn(varargin)
 %       SYNTAX: result = svn(svn, ...)
 %               svn gdiff filename
 %               svn gdiff filename head local
+%               svn gdiff filename base local
 %               svn gdiff filename 235 local
 %
 %  DESCRIPTION: Run svn.
@@ -88,7 +89,7 @@ if nargin == 3
     revision = varargin(2:end);
 elseif nargin == 1
     filename = varargin{1};
-    revision = {'head', 'local'};
+    revision = {'base', 'local'};
 else
     error('Invalid number of input arguments for GDIFF.');
 end
@@ -121,6 +122,15 @@ for n = 1:2
     elseif strcmp(revision{n}, 'head')
         revision_filename{n} = [tempdir, 'svngdiff-', name, '-head', ext];
         str = sprintf('svn(''cat "%s" -r HEAD > "%s"'')', ...
+            filename, revision_filename{n});
+        fprintf('%s\n', str);
+        tmp = eval(str);
+        if ~isempty(tmp)
+            error('tmp is not empty.');     % Make mlint happy.
+        end
+    elseif strcmp(revision{n}, 'base')
+        revision_filename{n} = [tempdir, 'svngdiff-', name, '-base', ext];
+        str = sprintf('svn(''cat "%s" -r BASE > "%s"'')', ...
             filename, revision_filename{n});
         fprintf('%s\n', str);
         tmp = eval(str);
