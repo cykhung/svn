@@ -1,15 +1,28 @@
-function svnnotes
-
-printnotes([mfilename('fullpath'), '.m']);
-
-end
-
-
-% Start Here
-
-%% Commit Everything Into SVN
+%% Get SVN.ZIP From GitHub
 %
-% * >> svn addci *
+% * unzip https://github.com/cykhung/svn/archive/refs/heads/master.zip .
+
+
+%% Get SVN.ZIP From Google Drive
+%
+% * Zip up all files.
+%   >> zip svn.zip v:\khung\svn\trunk
+%
+% * Upload svn.zip to Google Drive.
+%
+% * Go to https://sites.google.com/site/gdocs2direct and follow the
+%   instructions to create a downloadable link.
+%
+% * >> websave('svn.zip', 'https://tinyurl.com/4wa2pbbj', weboptions('Timeout', 1e3))
+%
+% * >> unzip svn.zip
+
+
+%% Perforce Helix
+%
+% * >> svn ls -v https://helixteamhub.cloud/mulberry/projects/kevin/repositories/subversion/tmp --username=cykhunggmailcom --password=J7w2y5B-Yn
+%
+% * >> svn co https://helixteamhub.cloud/mulberry/projects/kevin/repositories/subversion/tmp tmphelix
 
 
 %% Relocate
@@ -17,8 +30,6 @@ end
 % * >> svn relocate '"file://mathworks/salesservice/training_services/Course Development/BOReports/Course_History_From_SFDC/khung/svnrepos-test123"'
 %
 % * >> svn relocate file:///V:/khung/svnrepos-usbtest
-
-% End Here
 
 
 %% Modify Commit Log Message
@@ -58,25 +69,11 @@ end
 %            -m "Resurrect startup.m from revision 807."
 
 
-%% Plain Text File VS Binary File
+%% How does Subversion handle binary files?
 % 
-% * Should SVN Care About Plain Text File VS Binary File? Answer is yes. The
-%   following lists all situations where this distinction makes a difference:
+% * https://subversion.apache.org/faq.html#binary-files
 % 
-% * Situatiion 1: Keyword Substitution
-% 
-% * Situation 2: Merging. SVN will perform merging on text files only.
-% 
-% * Situation 3: svn update
-% 
-%     * This is related to svn merging.
-% 
-%     * Turns out that in the situation where a local file has local
-%       modifications and you perform `svn update` on this file, then (in case
-%       of text file) svn will automatically merge HEAD revision of this file
-%       with the local modications and save the merged result to the local file.
-% 
-% * Situation 4: Standardize end-of-line characters for all text files.
+% % pp. 431 of svn book (>> svnbook).
 
 
 %% Ignore
@@ -85,7 +82,11 @@ end
 % 
 %       The default value is *.o *.lo *.la *.al .libs *.so *.so.[0-9]* *.a 
 %       *.pyc *.pyo *.rej *~ #*# .#* .*.swp .DS_Store.
-% 
+%
+% * Tortoise Subversion Global ignore pattern:
+%       *.o *.lo *.la *.al .libs *.so *.so.[0-9]* *.a *.pyc 
+%       *.pyo __pycache__ *.rej *~ #*# .#* .*.swp .DS_Store [Tt]humbs.db
+%
 % * https://stackoverflow.com/questions/86049/how-do-i-ignore-files-in-subversion
 % 
 % * >> edit C:\Users\khung\AppData\Roaming\Subversion\config
